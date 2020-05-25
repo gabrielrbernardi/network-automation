@@ -1,7 +1,5 @@
 {
-  "username": "IgorHLeite",
-  "password": "passw",
-  "tenant": "Tenant Teste",
-  "description": "Testando Tenant 1",
-  "state": "eobrabro"
+  "name": "Tenant_Maidana",
+  "description": "Teste",
+  "state": "absent"
 }
