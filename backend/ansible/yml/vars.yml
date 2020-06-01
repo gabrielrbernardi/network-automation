@@ -1,5 +1,5 @@
 ---
-  name: "Tenant_Maidana"
-  description: "Teste"
-  state: "absent"
+  vrf: "teste"
+  description: "teste12314"
+  tenant: "LAB"
 

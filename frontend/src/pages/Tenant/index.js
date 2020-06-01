@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import './styles.css'
-import logo from '../Logon/algar-logo.png'
+import logo from '../../img/algar-logo.png'
 import api from '../../services/api'
 
 
 
-export default function Logon() {
+export default function CreateTenant() {
 
     const [ name, setName] = useState('')
     const [ description, setDescription] = useState('')
