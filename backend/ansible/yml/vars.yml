@@ -1,5 +1,6 @@
 ---
-  vrf: "teste"
-  description: "teste12314"
-  tenant: "LAB"
+  bd: "asdasdqw"
+  description: "asdasdasd"
+  tenant: "CAAS"
+  vrf: "VRF_TESTE-003"
 
