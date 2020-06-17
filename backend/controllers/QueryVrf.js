@@ -4,17 +4,20 @@ const app = express()
 const fs = require('fs')
 const cors = require('cors')
 const exec = require('child_process').exec;
-const json2yaml = 'sudo json2yaml ../ansible/json/vars.json > ../ansible/yml/vars.yml ; mkdir QUERY_VRFS_no_meu_lugar' //converte JSON->YAML & EXECUTA COMANDO ANSIBLE
 
 module.exports = {
   
 
      async listvrfs (request, response) { /* Rota que irá listar as VRFs presentes em um tenant */
       
-             
+      exec("ansible-playbook -i ./ansible/yml/hosts ./ansible/yml/query_vrfs.yml", (err,std) => {
+        console.log(err)
+        console.log(std)
+      })
+
      
         const queryvrf = fs.readFileSync('./ansible/querys/aci_vrfs.json') //le o arquivo
-          const queryvrf_vars = JSON.parse(queryvrf)
+        const queryvrf_vars = JSON.parse(queryvrf)
 
 
           var names = [];

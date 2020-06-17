@@ -4,7 +4,6 @@ const app = express()
 const fs = require('fs')
 const cors = require('cors')
 const exec = require('child_process').exec;
-const json2yaml = 'sudo json2yaml ../ansible/json/vars.json > ../ansible/yml/vars.yml ; mkdir QUERY_VRFS_no_meu_lugar' //converte JSON->YAML & EXECUTA COMANDO ANSIBLE
 
 
 
@@ -17,25 +16,17 @@ module.exports = {
 
         const VrfParm = request.body; //declara que os parametros do tenant são do corpo da requisição
   
-        fs.writeFileSync('./ansible/json/vars.json', JSON.stringify(VrfParm, undefined, 2), finished) //grava o .json recebido do front!
-      
-        function finished(err) {
-            console.log('all set.')
-        }
-      
-        const data = fs.readFileSync('./ansible/json/vars.json') //le o arquivo
-        const vars = JSON.parse(data) //converte o arquivo "bruto" para json
+        fs.writeFileSync('./ansible/json/vars.json', JSON.stringify(VrfParm, undefined, 2)) //grava o .json recebido do front!
+          
+
       
         console.log(VrfParm) //le as informações vindas do front
       
       
-        exec(json2yaml, {
-            cwd: __dirname
-          }, (err, stdout, stderr) => {
-            console.log(stdout);
-            if (err) console.log(err);
-            else runCommand(cmds, cb);
-          });      
+        exec("json2yaml ./ansible/json/vars.json > ./ansible/yml/vars.yml && ansible-playbook -i ./ansible/yml/hosts ./ansible/yml/create_epg.yml", (err,std) => {
+          console.log(err)
+          console.log( std )
+        })
 
 
           
@@ -48,9 +39,12 @@ module.exports = {
 
 
                       
-            //QUERY bds ON TENANT
+      exec("ansible-playbook -i ./ansible/yml/hosts ./ansible/yml/query_bds.yml", (err,std) => {
+        console.log(err)
+        console.log(std)
+      })
   
-  
+
             const queryvrf = fs.readFileSync('./ansible/querys/aci_bds.json') //le o arquivo
             const queryvrf_vars = JSON.parse(queryvrf)
         
@@ -89,12 +83,11 @@ module.exports = {
     },
 
     async listap (request, response) { /* Rota que irá listar os Ap's presentes em um tenant */
-
-                
-  
-            //QUERY AP ON TENANT
-  
-  
+          
+    exec("ansible-playbook -i ./ansible/yml/hosts ./ansible/yml/query_aps.yml", (err,std) => {
+      console.log(err)
+      console.log(std)
+    })
             const queryvrf = fs.readFileSync('./ansible/querys/aci_aps.json') //le o arquivo
             const queryvrf_vars = JSON.parse(queryvrf)
         

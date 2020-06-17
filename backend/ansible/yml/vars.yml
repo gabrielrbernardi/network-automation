@@ -1,6 +1,8 @@
 ---
-  bd: "asdasdqw"
-  description: "asdasdasd"
-  tenant: "CAAS"
-  vrf: "VRF_TESTE-003"
+  epg: "UASUYAGDY"
+  description: "UYAGSUYAGD"
+  tenant: "ZZ-AUTOMATION-ACI"
+  vrf: "VRF_FINAL"
+  bd: "bridge123124125"
+  ap: "AUYSGDYUAGS"
 

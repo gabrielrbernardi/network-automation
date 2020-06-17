@@ -95,7 +95,7 @@ export default function CreateEPG() {
             <div className="roww">
                 <div className="filho">
                 <h2>Endpoint Group Name:</h2> <input className="EPGinp"
-                    placeholder="Tenant Name" 
+                    placeholder="EPG Name" 
                     value={epg}
                     onChange={e => setEpg(e.target.value)}
                     ></input>

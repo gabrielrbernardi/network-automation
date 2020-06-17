@@ -53,7 +53,7 @@ export default function CreateVRF() {
                 <div className="item">
                 <form onSubmit={handleSubmit}>
                 <h2>VRF Name:</h2> <input
-                    placeholder="Tenant Name" 
+                    placeholder="VRF Name" 
                     value={vrf}
                     onChange={e => setVrf(e.target.value)}
                     ></input>

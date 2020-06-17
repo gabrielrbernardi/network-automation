@@ -10,7 +10,7 @@ import Select from 'react-select';
 export default function CreateAP() {
 
 
-    const [ vrf, setVrf] = useState('')
+    const [ ap, setAp] = useState('')
     const [ description, setDescription] = useState('')
     const [ tenant, setTenantname] = useState('')
     const [ formatted_tn, setformatted_tn ] = useState('')
@@ -30,7 +30,7 @@ export default function CreateAP() {
         e.preventDefault()
 
         const data = {
-            vrf,
+            ap,
             description,
             tenant,
         }
@@ -53,9 +53,9 @@ export default function CreateAP() {
                 <div className="item">
                 <form onSubmit={handleSubmit}>
                 <h2>Application Profile Name:</h2> <input
-                    placeholder="Tenant Name" 
-                    value={vrf}
-                    onChange={e => setVrf(e.target.value)}
+                    placeholder="AP Name" 
+                    value={ap}
+                    onChange={e => setAp(e.target.value)}
                     ></input>
                           
                 <h2>Description:</h2> <input

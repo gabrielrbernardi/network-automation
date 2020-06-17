@@ -32,7 +32,7 @@ export default function CreateBD() {
       useEffect (() => {
         async function QueryVRF() {
           
-            api.get('bd/vrfs').then(response => {
+            api.get('bd/vrfs', tenant).then(response => {
             setformatted_vrf(response.data)})}
             QueryVRF()
 
@@ -50,8 +50,8 @@ export default function CreateBD() {
             vrf,
         }
     console.log(data)
-    const response = await api.post('vrf' , data)
-    alert('VRF criada com sucesso!')
+    const response = await api.post('bd' , data)
+    alert('BD criado com sucesso!')
 
     }
 
@@ -68,7 +68,7 @@ export default function CreateBD() {
                 <div className="item">
                 <form onSubmit={handleSubmit}>
                 <h2>Bridge Domain Name:</h2> <input
-                    placeholder="Tenant Name" 
+                    placeholder="BD Name" 
                     value={bd}
                     onChange={e => setBd(e.target.value)}
                     ></input>
